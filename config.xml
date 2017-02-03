@@ -25,7 +25,7 @@
   <plugin name="cordova-plugin-splashscreen" version="3.1.0" />
   <plugin name="cordova-plugin-network-information" version="1.2.1" />
   <plugin name="cordova-plugin-dialogs" version="1.2.1" />
-  <plugin name="cordova-plugin-file-transfer" src="https://github.com/apache/cordova-plugin-file-transfer.git" version="1.5.2-dev" />
+  <plugin name="cordova-plugin-file-transfer" src="https://github.com/apache/cordova-plugin-file-transfer.git" />
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
   <allow-intent href="tel:*" />

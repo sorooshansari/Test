@@ -1,0 +1,79 @@
+﻿@charset "UTF-8";
+
+@font-face {
+  font-family: "myicons";
+  src:url("../lib/ionic/fonts/myicons.eot");
+  src:url("../lib/ionic/fonts/myicons.eot?#iefix") format("embedded-opentype"),
+    url("../lib/ionic/fonts/myicons.woff") format("woff"),
+    url("../lib/ionic/fonts/myicons.ttf") format("truetype"),
+    url("../lib/ionic/fonts/myicons.svg#myicons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "myicons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: 'myicons' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home-house-streamline:before {
+  content: "\61";
+}
+.icon-ios-location-outline:before {
+  content: "\62";
+}
+.icon-map-pin-streamline:before {
+  content: "\63";
+}
+.icon-bookmark-o:before {
+  content: "\64";
+}
+.icon-headset-sound-streamline:before {
+  content: "\65";
+}
+.icon-ios-search:before {
+  content: "\66";
+}
+.icon-location:before {
+  content: "\67";
+}
+.icon-cloud-download-2:before {
+  content: "\68";
+}
+.icon-picture-streamline-1:before {
+  content: "\69";
+}
+.icon-lightbulb-shine:before {
+  content: "\6a";
+}
+.icon-ios-locked-outline:before {
+  content: "\6b";
+}
+.icon-ios-time-outline:before {
+  content: "\6c";
+}
+.icon-clock-streamline-time:before {
+  content: "\6d";
+}

@@ -1,0 +1,291 @@
+<style>
+    .swiper-container {
+        overflow-y: visible !important;
+        position: relative !important;
+    }
+
+    .swiper-container-horizontal > .swiper-pagination {
+        position: relative !important;
+        padding-top: 10px !important;
+        /*bottom: 355px !important;*/
+    }
+
+    .swiper-wrapper {
+        position: relative !important;
+    }
+
+    .swiper-pagination-bullet {
+        width: 10px !important;
+        height: 10px !important;
+        background: #144482 !important;
+        border: 1px solid white !important;
+    }
+
+    .boxstyle > .list:first-of-type {
+        border-radius: 6px 6px 0px 0px !important;
+        margin-bottom: 10px;
+    }
+
+    .item-divider i {
+        border-top-left-radius: 5px !important;
+        border-top-right-radius: 5px !important;
+    }
+
+
+
+    .item {
+        text-overflow: initial;
+        white-space: normal;
+    }
+
+    .player {
+        color: black;
+    }
+
+    #BookmarkBtn {
+        -webkit-transition: all 600ms;
+        -moz-transition: all 600ms;
+        -o-transition: all 600ms;
+        transition: all 600ms;
+        position: fixed;
+        border-radius: 100%;
+        background-color: #2170d7;
+        width: 50px;
+        height: 50px;
+        z-index: 1000000;
+        text-align: center;
+        padding-top: 10px;
+        box-shadow: 0px 0px 5px #333;
+        right: 20px;
+        bottom: 20px;
+    }
+
+        #BookmarkBtn i {
+            -webkit-transition: all 600ms;
+            -moz-transition: all 600ms;
+            -o-transition: all 600ms;
+            transition: all 600ms;
+            font-size: 30px !important;
+        }
+
+    .Bookmarked {
+        -webkit-transition: all 600ms;
+        -moz-transition: all 600ms;
+        -o-transition: all 600ms;
+        transition: all 600ms;
+        box-shadow:0px 0px 1px inset;
+        background-color: #fff !important;
+    }
+
+        .Bookmarked i {
+            -webkit-transition: all 600ms;
+            -moz-transition: all 600ms;
+            -o-transition: all 600ms;
+            transition: all 600ms;
+            color: #144482 !important;
+        }
+
+    #cameraTabDefaultPage-container3 {
+        margin-bottom: 30px;
+    }
+
+    #cameraTabDefaultPage-list-item-container12 .list .item {
+        font-size: 14px !important;
+    }
+
+    .Gal_desc {
+        margin-top: 85%;
+        padding: 0 15px;
+        color: black;
+        border-left: 5px solid #2170d7;
+        margin-left: 20px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+</style>
+
+<ion-view title="" id="page6">
+    <ion-nav-title>
+        <img src="img/IAGappHeaderLOGO.png">
+        <p>{{PageTitle}}</p>
+    </ion-nav-title>
+    <div ng-init="ShowBookmark = false" ng-show="ShowBookmark" id="BookmarkBtn" 
+        ng-class="{Bookmarked: placeBookmarked==1}"
+        ng-click="bookmark(PlaceInfo.PlaceId)">
+        <i style="color:white;" class="icon ion-bookmark"></i>
+    </div>
+    <ion-content padding="true" class="has-header">
+        <ion-list class="card boxstyle" id="cameraTabDefaultPage-card21">
+            <ion-item class="item-icon-left  item-divider">
+                <i class="icon ion-pin"></i>{{PlaceInfo.PlaceName}}
+            </ion-item>
+            <ion-list class="item-image">
+                <img src="{{PlaceInfo.PlaceImage}}"
+                     width="100%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+            </ion-list>
+            <!--<ion-row>
+                <ion-col>
+                    <button ion-button icon-left clear small>
+                        <ion-icon name="thumbs-up"></ion-icon>
+                        <div>12 Likes</div>
+                    </button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button icon-left clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div>4 Comments</div>
+                    </button>
+                </ion-col>
+                <ion-col center text-center>
+                    <ion-note>
+                        11h ago
+                    </ion-note>
+                </ion-col>
+            </ion-row>-->
+
+            <div class="item-body">
+                <div style="color:#000000;">
+                </div>
+                <p ng-bind-html="ModifyText(PlaceInfo.PlaceDescription)" style="margin-top:0px;"></p>
+                <ion-list ng-show="PlaceInfo.Audios.length" id="AudiosCard">
+                    <ion-item ng-repeat="audio in PlaceInfo.Audios" class="item-icon-left">
+                        <i ng-show="!audio.downloading"
+                           ng-click="audioClicked($index)"
+                           ng-class="ChooseClass(audio.downloaded, audio.playing)"
+                           class="icon dark"></i>
+
+
+
+
+
+
+
+                        <div ng-show="audio.downloading"
+                             ng-class="percentClass(audio.downloadProgress)"
+                             style="position:absolute; left:14px; font-size:20px" class="c100">
+                            <span></span>
+                            <div class="slice">
+                                <div class="cbar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                        {{audio.Name}}
+                        <ion-option-button ng-click="removeTrack(audio.Id, $index, 1)" ng-show="audio.downloaded"><i class="icon ion-trash-a assertive"></i></ion-option-button>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </ion-list>
+        <ion-list ng-show="PlaceInfo.Stories.length" class="boxstyle card">
+            <ion-item class="item-icon-left item-divider">
+                <i class="icon ion-ios-glasses-outline"></i>Related Stories
+            </ion-item>
+            <div class="item-body">
+                <ion-list id="StoriesCard">
+                    <ion-item class="item-icon-left balanced"
+                              ng-repeat="story in PlaceInfo.Stories" id="cameraTabDefaultPage-list-item17">
+                        <i ng-show="!story.downloading"
+                           ng-click="StoryClicked($index)"
+                           ng-class="ChooseClass(story.downloaded, story.playing)"
+                           class="icon dark"></i>
+
+
+
+
+                        <!--<ul class="progress" ng-show="story.downloading"
+                            ng-class="percentClass(story.downloadProgress)">
+                            <li data-name="SVG Skill" data-percent="13%">
+                                <svg viewBox="-10 -10 220 220">
+                                    <g fill="none" stroke-width="3" transform="translate(100,100)">
+                                        <path d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)" />
+                                        <path d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)" />
+                                        <path d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)" />
+                                        <path d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)" />
+                                        <path d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)" />
+                                        <path d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)" />
+                                    </g>
+                                </svg> <svg viewBox="-10 -10 220 220">
+                                    <path d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,200 C155.228475,200 200,155.228475 200,100 Z" stroke-dashoffset="610"></path>
+                                </svg>
+                            </li>
+                        </ul>-->
+
+
+
+                        <div ng-show="story.downloading"
+                             ng-class="percentclass(story.downloadprogress)"
+                             style="position:absolute; left:14px; font-size:20px" class="c100">
+                            <span></span>
+                            <div class="slice">
+                                <div class="cbar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                        {{story.Name}}
+                        <ion-option-button ng-click="removeTrack(story.Id, $index, 0)" ng-show="story.downloaded"><i class="icon ion-trash-a assertive"></i></ion-option-button>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </ion-list>
+        <ion-list ng-show="PlaceInfo.ExtraImages.length" class="boxstyle card">
+            <ion-item class="item-icon-left  item-divider">
+                <i class="icon ion-images"></i>Gallery Item
+            </ion-item>
+            <ion-slides disable-side-menu-drag="" options="options" slider="PlacePageSlider"
+                        delegate-handle="PlacePageSlider" id="PlacePage-slider" style="width:100%;height:auto;">
+                <!--<ion-slide-page ng-repeat="img in PlaceInfo.ExtraImages">
+                    <ion-scroll zooming="true" direction="xy" style="width: 100%; height: 100%">
+                        <img ng-src="{{img.path}}"
+                             style="display: block; margin-left: auto; margin-right: auto; width:100%; height:100%;">
+                    </ion-scroll>
+                </ion-slide-page>-->
+                <ion-slide-page ng-repeat="img in PlaceInfo.ExtraImages" style="background:url('{{img.path}}') no-repeat top center; background-size:95%; width: 340px;  margin-top: 10px;">
+                    <p class="Gal_desc">{{img.description}}</p>
+                </ion-slide-page>
+            </ion-slides>
+            <!--<ion-slide-box auto-play="false" does-continue="false"
+                           on-slide-changed="slideHasChanged($index)">
+                <ion-slide ng-repeat="img in PlaceInfo.ExtraImages" class="margin">
+                    <img ng-src=""
+                         style="display: block; margin-left: auto; margin-right: auto; width:100%; height:auto;">
+                </ion-slide>
+            </ion-slide-box>-->
+            <!--<div class="item item-body">
+                <div style="color:#000000;">
+                    <p style="margin-top:0px;">
+
+                    </p>
+                </div>
+            </div>-->
+        </ion-list>
+        <ion-list ng-show="PlaceInfo.Tips.length" class="card boxstyle" id="cameraTabDefaultPage-card23">
+            <ion-item class="item-icon-left  item-divider" id="cameraTabDefaultPage-list-item30">
+                <i class="icon ion-android-bulb"></i>Tips
+            </ion-item>
+            <div id="cameraTabDefaultPage-container3">
+                <div class="item item-body" id="cameraTabDefaultPage-list-item-container12">
+                    <ion-list ng-repeat="tip in PlaceInfo.Tips">
+                        <ion-item class="item-icon-left">
+                            <i ng-class="tip.Class" class="icon"></i>
+                            {{tip.Content}}
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </div>
+
+        </ion-list>
+    </ion-content>
+</ion-view>
+<style>
+    .my-show-hide-animation.ng-hide-add,
+    .my-show-hide-animation.ng-hide-remove {
+        -webkit-transition: 0.5s linear all;
+        transition: 0.5s linear all;
+        /* remember to add this */
+        display: block !important;
+        opacity: 1;
+    }
+
+    .my-show-hide-animation.ng-hide {
+        opacity: 0;
+    }
+</style>

@@ -1,0 +1,153 @@
+﻿<style>
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+    	/* Load animation */
+
+@-webkit-keyframes 
+load { 0% {
+	opacity:0;
+}
+}
+@-moz-keyframes 
+load { 0% {
+	opacity:0;
+}
+}
+@keyframes 
+load { 0% {
+	opacity:0;
+}
+}
+
+
+#FullPageLoading
+{
+	    		margin:0;
+    		padding:0;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100vh;
+	background-color:#144482;
+    opacity:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    resize: vertical;
+    overflow: auto;
+}
+    #FullPageLoading .swiper-container-horizontal > .swiper-pagination {
+        bottom: 50px;
+    }
+
+.load 
+{
+	  -webkit-animation: load 0.8s !important;
+  -moz-animation: load 0.8s !important;
+  -o-animation: load 0.8s !important;
+  animation: load 0.8s !important;
+}
+
+
+#fpcontainer
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#fpcontainer img
+{
+	margin:0 auto;
+}
+
+#fpcontainer p, #fpcontainer img
+{
+	display:block;
+}
+
+#fpcontainer #spinbars
+{
+    height: 40px;
+    margin-top: 20px;
+}
+
+#fpcontainer #IAGLogo
+{
+    height: 100px;
+}
+
+#LoadingText
+{
+	display:none !important;
+	
+  }
+  
+</style>
+<ion-view title="" hide-back-button="true" id="toturialsPage">
+    <ion-content padding="false" class="manual-remove-top-padding" scroll="false">
+        <ion-slides disable-side-menu-drag="" options="{'loop': false}" slider="toturialsPageSlider" delegate-handle="toturialsPageSlider" id="toturialsPage-slider" style="width:100%;height:100%;">
+            <!--<ion-slide-page id="page-slide216">
+                <div id="FullPageLoading" class="load">
+                    <div id="fpcontainer">
+                        <img id="IAGLogo" src="img/IAG-icon-smiled.png" />
+                        <div style="text-align:center;">
+                            <img id="spinbars" src="img/bars.svg" />
+                            <p id="LoadingText">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </ion-slide-page>
+            <ion-slide-page id="page-slide217">
+                <div id="FullPageLoading" class="load">
+                    <div id="fpcontainer">
+                        <img id="IAGLogo" src="img/IAG-icon-smiled.png" />
+                        <div style="text-align:center;">
+                            <img id="spinbars" src="img/bars.svg" />
+                            <p id="LoadingText">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </ion-slide-page>
+            <ion-slide-page id="page-slide218">
+                <div id="FullPageLoading" class="load">
+                    <div id="fpcontainer">
+                        <img id="IAGLogo" src="img/IAG-icon-smiled.png" />
+                        <div style="text-align:center;">
+                            <img id="spinbars" src="img/bars.svg" />
+                            <p id="LoadingText">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </ion-slide-page>-->
+
+
+            <ion-slide-page>
+
+                <ion-view title="" id="firstPage" class="gradiantBG" style="background: url('img/banner.jpg') 83%; background-repeat: no-repeat;">
+                    <ion-nav-bar class="bar-stable bar-transparent">
+                        <ion-nav-back-button></ion-nav-back-button>
+                        <ion-nav-buttons side="right">
+                            <button ng-click="Skip()" class="button button-clear" style="color:white;     text-shadow: 1px 1px 3px #222;">Skip</button>
+                        </ion-nav-buttons>
+                    </ion-nav-bar>
+                    <ion-content padding="true" class="has-header" scroll="false">
+                        <div class="spacer" style="width: 300px; height: 105px;"></div>
+                        <h1 id="firstPage-heading3" style="color:#fff;font-family:'Open Sans' !important; font-style:normal;font-weight:bold;text-align:center;     text-shadow: 1px 1px 3px #222;" class="">Iran Audio Guide</h1>
+                        <p id="firstPage-markdown6" style="text-shadow: 1px 1px 3px #222; color:#fff;text-align:center;" class="">Your ultimate guide</p>
+                        <div class="spacer" style="width: 300px; height: 166px;"></div>
+                        <!--<button ui-sref="tabsController.home" id="firstPage-button5" class="button button-assertive button-large button-block">Sign in with Google</button>-->
+                        <button ng-click="googleLogin()" id="login-button4" class="center button button-assertive button-block icon ion-social-google-outline">&emsp; Sign in with Google</button>
+                        <button ui-sref="secondPage" id="firstPage-button6" class="button button-small button-block button-light center" href="#/second ">
+
+                            <i class="icon ion-help-circled"></i>
+
+                            <text style="color: #144482;">&nbsp; Don't have Google?</text>
+                        </button>
+                    </ion-content>
+                </ion-view>
+
+            </ion-slide-page>
+
+        </ion-slides>
+    </ion-content>
+</ion-view>

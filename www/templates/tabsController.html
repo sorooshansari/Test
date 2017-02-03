@@ -1,0 +1,128 @@
+<ion-view title="Tabs Controller" id="page1">
+    <ion-side-menus enable-menu-with-back-views="true" data-componentid="side-menu21">
+        <ion-side-menu-content>
+            <ion-nav-bar class="bar-stable">
+                <ion-nav-back-button></ion-nav-back-button>
+                <ion-nav-buttons side="right">
+                    <button id="sidemenubtn" class="button button-icon button-clear icon ion-headphone" menu-toggle="right"></button>
+                </ion-nav-buttons>
+            </ion-nav-bar>
+            <ion-tabs class="tabs-stable tabs-icon-only">
+                <ion-tab icon="ion-ios-home" href="#/page1/page2">
+                    <ion-nav-view name="tab1"></ion-nav-view>
+                </ion-tab>
+                <ion-tab icon="ion-android-pin" href="#/page1/page4">
+                    <ion-nav-view name="tab3"></ion-nav-view>
+                </ion-tab>
+                <ion-tab icon="ion-ios-bookmarks" href="#/page1/page3">
+                    <ion-nav-view name="tab2"></ion-nav-view>
+                </ion-tab>
+            </ion-tabs>
+        </ion-side-menu-content>
+        <ion-side-menu side="right" id="side-menu21">
+            <ion-content padding="false" class="side-menu-right">
+                <ion-list id="menu-list1" class="sidebarback">
+                    <ion-item class="item-avatar positive" id="menu-list-item4" ng-init="isUseropenbar=0;" ng-class="{useropenbar: isUseropenbar==1}">
+                        <img id="userimg" src="{{User_Img}}">
+                        <div>
+                            <div ng-click="isUseropenbar = (isUseropenbar===1)?0:1;">
+                                <p ng-show="Authenticated != 'false'" id="username">{{User_Name}}</p>
+                                <div ng-show="Skipped === false || Skipped == 'false'" id="userEmail">
+                                    {{User_Email}}
+                                </div>
+                                <span ng-show="Authenticated === true || Authenticated == 'true'" id="openbtn"><i class="icon ion-android-more-horizontal"></i></span>
+                            </div>
+                            <div ng-show="Authenticated === true || Authenticated == 'true'" id="userbtns">
+                                <div style="display:inline-flex;" ng-click="logOut()">
+                                    <i class="icon ion-log-out" style="color:white;"></i>
+                                    <p style="color:white;">&emsp;Sign Out</p>
+                                </div>
+                            </div>
+                            <a ng-show="Skipped === true || Skipped == 'true'" ng-click="LoginUser()" class="sidebarbtn button button-default button-block">
+                                <i class="icon ion-log-in"></i>&emsp; Sign In
+                            </a>
+                            <a ng-show="Skipped === true || Skipped == 'true'" ng-click="RegisterUser()" class="sidebarbtn button button-default button-block">
+                                <i class="icon ion-person-add"></i>&emsp; Register
+                            </a>
+                        </div>
+                    </ion-item>
+
+
+                    <!--<ion-item id="PlayerBox" style="padding-left:0px;padding-right:0px;">
+                        <ion-item-divider ng-show="SPinfo.hasMedia" ng-bind="SPinfo.trackInfo.Name" class="center item-stable">
+                        </ion-item-divider>
+
+                        <ion-item class="player">
+                            <div class="row">
+                                <div ng-click="stepForward()" class="col col-xs-4"><i class="icon ion-arrow-return-right"></i>10s</div>
+                                <div class="col col-xs-4"><i ng-click="SPplayPause()" ng-class="SPchooseClass(SPinfo.playing)" class="icon"></i></div>
+                                <div ng-click="stepBackward()" class="col col-xs-4">10s<i class="icon ion-arrow-return-left"></i></div>
+                            </div>
+                            <div class="list">
+                                <ion-item class="range noBoarder">
+                                    <i ng-bind="MMSS(SPposition)"></i>
+                                    <input type="range" name="volume" min="0" max="100"
+                                           ng-model="SPrange" disabled>
+                                    <i ng-bind="MMSS(SPinfo.duration)"></i>
+                                </ion-item>
+                            </div>
+                        </ion-item>
+                        <ion-list ng-show="SPtracks.length">
+                            <ion-item-divider class="item-stable">
+                                Recently Played
+                            </ion-item-divider>
+                            <ion-item no-lines ng-repeat="track in SPtracks" class="item-icon-left">
+                                <i ng-click="loadSPtrack(track)" ng-class="SPchooseClass(track.playing)" class="icon"></i>
+                                {{track.Name}}
+                            </ion-item>
+                        </ion-list>
+                    </ion-item>-->
+
+
+                    <div class="list" id="PlayerBox">
+                        <div ng-bind="SPinfo.trackInfo.Name" class="item item-divider center item-stable">
+                        </div>
+
+                        <div class="item player">
+                            <div class="row">
+                                <div ng-click="stepForward()" class="col col-xs-4">
+                                    <i class="icon ion-arrow-return-right"></i>10s
+                                </div>
+                                <div ng-click="SPplayPause()" class="col col-xs-4">
+                                    <i ng-class="SPchooseClass(SPinfo.playing)" class="icon"></i>
+                                </div>
+                                <div ng-click="stepBackward()" class="col col-xs-4">
+                                    10s<i class="icon ion-arrow-return-left"></i>
+                                </div>
+                            </div>
+                            <div class="list">
+                                <div class="item range noBoarder">
+                                    <i ng-bind="MMSS(SPposition)"></i>
+                                    <input type="range" name="volume" min="0" max="100"
+                                           ng-model="SPrange" disabled>
+                                    <i ng-bind="MMSS(SPinfo.duration)"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="SPtracks.length">
+                            <div class="item item-divider">
+                                Recently Played
+                            </div>
+
+                            <a ng-repeat="track in SPtracks" class="item item-icon-left">
+                                <i ng-click="loadSPtrack(track)" ng-class="SPchooseClass(track.playing)" class="icon"></i>
+                                {{track.Name}}
+                            </a>
+                        </div>
+                    </div>
+
+                    <!--<a ng-click="ShowPackage()" class="button button-balanced button-block">
+                        Packages
+                    </a>-->
+            </ion-content>
+            <ion-footer-bar class="bar-stable">
+                <h5 style="text-align:center; width: 100%;">Made with <i class="icon ion-ios-heart assertive" style="color:#ef473a!important;font-size:14px!important;"></i> on planet earth</h5>
+            </ion-footer-bar>
+        </ion-side-menu>
+    </ion-side-menus>
+</ion-view>

@@ -1,0 +1,20 @@
+{
+  "android": {
+    "release": {
+      "keystore": "c:\\soroosh-release-key.keystore",
+      "storePassword": "davidoff2280908565",
+      "alias": "SorooshA",
+      "password": "davidoff2280908565",
+      "keystoreType": ""
+    }
+  },
+  "ios": {
+    "debug": {
+      "developmentTeam": "H99ER4EVEQ"
+    },
+
+    "release": {
+      "developmentTeam": "H99ER4EVEQ"
+    }
+  }
+ }

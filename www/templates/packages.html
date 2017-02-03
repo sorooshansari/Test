@@ -1,0 +1,53 @@
+<ion-view title="{{PageTitle}}" id="packages">
+    <ion-content padding="false" class="has-header">
+        <div ng-repeat="package in packages" class="list card">
+            <ion-item class="item-icon-right  pkg_name" id="packages-list-item25">
+                {{package.PackageName}}
+                <i class="icon ion-ios-briefcase-outline"></i>
+            </ion-item>
+            <div class="item item-body pkg_box">
+                <div style="text-align:justify;" class="show-list-numbers-and-dots pkg_desc">
+                    <p style="margin-top:0px;color:#000000;font-size:13px;">
+                        <strong>Cities</strong>
+                    </p>
+                </div>
+                <ion-list id="packages-list2">
+                    <ion-item ng-repeat="city in package.PackageCities" class="item-divider pkg_citynameCard">{{city.CityName}}</ion-item>
+                </ion-list>
+                <button id="packages-button1" style="font-weight:500;font-size:13px;border-radius:5px 5px 5px 5px;"
+                        class="button button-positive button-small pkg_buybtn"
+                        ng-click="purchasePackage(package.PackageId)">
+                    Get - {{package.PackagePrice}}&#xFDFC;
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+<style>
+    .pkg_desc {
+        padding-left: 15px;
+        border-left: 5px solid #387EF5;
+        margin-bottom: 10px;
+    }
+
+    .pkg_citynameCard {
+        font-size: 12px !important;
+        padding: 5px;
+        border-bottom: 3px solid #add8e6 !important;
+    }
+
+    .pkg_buybtn {
+        position: absolute;
+        right: 16px;
+        margin-top: 5px;
+        padding: 5px 20px;
+    }
+
+    .pkg_name {
+        border-top: thick solid #3F51B5 !important;
+    }
+
+    .pkg_box {
+        padding-bottom: 50px;
+    }
+</style>

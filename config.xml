@@ -122,8 +122,8 @@
   <platform name="wp8">
     <splash src="res/screens/wp8/SplashScreenImage.png" width="768" height="1280" />
   </platform>
-  <plugin name="cordova-sqlite-storage" version="2.0.0" />
-  <plugin name="cordova-plugin-inappbrowser" version="1.6.1" />
+  <plugin name="cordova-sqlite-storage" />
+  <plugin name="cordova-plugin-inappbrowser" />
   <plugin name="cordova-plugin-googleplus" spec="https://github.com/EddyVerbruggen/cordova-plugin-googleplus">
     <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.AIzaSyCB_6UjQ8sd7J7VmNNEQ_unnPinzZ4Zh8g" />
   </plugin>
